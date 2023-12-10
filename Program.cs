@@ -11,10 +11,10 @@ namespace MartonHAziElektromosConsole {
             string gateType = gateInput[0];
             string input1Name = gateInput[1];
             string input2Name = (gateInput.Length > 2) ? gateInput[2] : null;
-            
+            string input3Name = (gateInput.Length > 3) ? gateInput[3] : null;
             List<string[]> Ertekek = ErtekBeolvasas();
-            Ertekek = ErtekValaszto(ref Ertekek,input1Name, input2Name);
-            List<string> eredmeny = LogikaiKapuSzamolo(gateType, input1Name, input2Name, Ertekek);
+            Ertekek = ErtekValaszto(ref Ertekek,input1Name, input2Name,input3Name);
+            List<string> eredmeny = LogikaiKapuSzamolo(gateType, input1Name, input2Name,input3Name ,Ertekek);
             kiir(eredmeny);
             Console.ReadKey();
 
@@ -24,11 +24,14 @@ namespace MartonHAziElektromosConsole {
                 Console.Write(eredmenyek[i]);
             }
         }
-        private static List<string[]> ErtekValaszto(ref List<string[]> ertekek ,string input1Name, string input2Name) {
+        private static List<string[]> ErtekValaszto(ref List<string[]> ertekek ,string input1Name, string input2Name,string input3Name) {
             for (int i = 0; i < ertekek.Count; i++) {
                 if (ertekek[i][0] != input1Name) {
                     if (ertekek[i][0] != input2Name) {
-                        ertekek.Remove(ertekek[i]);
+                        if (ertekek[i][0] != input3Name) {
+                            ertekek.Remove(ertekek[i]);
+                        }
+                        
                     }
                 }
             }
@@ -62,8 +65,9 @@ namespace MartonHAziElektromosConsole {
             }
             return beolvas;
         }
-        static List<string> LogikaiKapuSzamolo(string gateType, string input1Name, string input2Name, List<string[]> Ertekek) {
+        static List<string> LogikaiKapuSzamolo(string gateType, string input1Name, string input2Name,string input3Name, List<string[]> Ertekek) {
             List<string> First = new List<string>();
+            List<string> Second = new List<string>();
             List<string> Last = new List<string>();
             string temp;
             for (int i = 0; i < Ertekek[0][1].Length; i+=2) {
@@ -73,13 +77,26 @@ namespace MartonHAziElektromosConsole {
             if (input2Name!=null) {
                 for (int i = 0; i < Ertekek[1][1].Length; i += 2) {
                     temp = Atalakito("" + Ertekek[1][1][i] + Ertekek[1][1][i + 1]);
+                    Second.Add(temp);
+                }
+            }
+            if (input3Name != null) {
+                for (int i = 0; i < Ertekek[2][1].Length; i += 2) {
+                    temp = Atalakito("" + Ertekek[2][1][i] + Ertekek[2][1][i + 1]);
                     Last.Add(temp);
                 }
             }
             List<string> eredmenyLista = new List<string>();
+
             for (int i = 0; i < First.Count; i++) {
+
+
+
+
+
+
                 if (input2Name != null) {
-                    eredmenyLista.Add(EgysegSzamol(gateType, Convert.ToDouble(First[i]), Convert.ToDouble(Last[i])));// minden másik kapu
+                    eredmenyLista.Add(EgysegSzamol(gateType, Convert.ToDouble(First[i]), Convert.ToDouble(Second[i])));// minden másik kapu
                 }
                 else {
                     eredmenyLista.Add(EgysegSzamol(gateType, Convert.ToDouble(First[i]), 0.0));// a not itt megy végbe
