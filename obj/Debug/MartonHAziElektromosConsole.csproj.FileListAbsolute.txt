@@ -1,0 +1,7 @@
+E:\sajatKodok\DotNet\MartonHAziElektromosConsole\bin\Debug\MartonHAziElektromosConsole.exe.config
+E:\sajatKodok\DotNet\MartonHAziElektromosConsole\bin\Debug\MartonHAziElektromosConsole.exe
+E:\sajatKodok\DotNet\MartonHAziElektromosConsole\bin\Debug\MartonHAziElektromosConsole.pdb
+E:\sajatKodok\DotNet\MartonHAziElektromosConsole\obj\Debug\MartonHAziElektromosConsole.csproj.AssemblyReference.cache
+E:\sajatKodok\DotNet\MartonHAziElektromosConsole\obj\Debug\MartonHAziElektromosConsole.csproj.CoreCompileInputs.cache
+E:\sajatKodok\DotNet\MartonHAziElektromosConsole\obj\Debug\MartonHAziElektromosConsole.exe
+E:\sajatKodok\DotNet\MartonHAziElektromosConsole\obj\Debug\MartonHAziElektromosConsole.pdb
